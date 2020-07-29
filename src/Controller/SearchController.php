@@ -42,6 +42,7 @@ class SearchController extends AbstractController
             $data['filters'] = $form->getData();
         }
 
+
         $nbUsers = count($userRepository->findSearch($data));
         $users = $userRepository->findSearch($data, $page);
 

@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Repository\FavoriteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +24,6 @@ class FavoriteController extends AbstractController
         $user = $this->getUser();
         $nbFavorites = count($favoriteRepository->findFavoriteByUser($user));
         $favorites = $favoriteRepository->findFavoriteByUser($user, $page);
-//        dd($favorites);
 
         return $this->render('favorite/index.html.twig', [
             'favorites' => $favorites,

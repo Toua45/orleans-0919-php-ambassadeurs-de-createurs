@@ -28,10 +28,10 @@
                                 {% else %}
                                 {{ vich_uploader_asset(user, 'pictureFile') }}
                                 {% endif %}" alt="image de {{ user.firstname }}">
-                            <div class="star">
-                                <a href="{{ path('search_like', {'id' : user.id}) }}" class="btn btn-link js-like">
-                                    <div class="col-md-1 col-sm-12 mt-2">
-                                        <span class="js-likes">{{ user.followers | length }}</span>
+                            <div class="favorite-content d-flex justify-content-end align-items-center mr-4">
+                                <a href="{{ path('search_like', {'id' : user.id}) }}" class="btn btn-link js-favorite">
+                                    <div class="add-to-favorites d-flex flex-row mt-2">
+                                        <span class="js-favorites mb-2">{{ user.followers | length }}</span>
                                         {% set class="far" %}
                                         {% if app.user %}
                                             {% for favorites in app.user.followedUsers %}

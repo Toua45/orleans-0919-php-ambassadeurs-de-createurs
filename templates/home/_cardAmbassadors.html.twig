@@ -2,24 +2,25 @@
     <h2 class="mx-0 mx-lg-3 mb-lg-5 py-4 show homepageTitle"> Nos Ambassadeurs</h2>
     <div class="container-fluid card-ambassador mx-0 px-0 mx-lg-2 px-lg-2 w-100">
         <div class="row justify-content-around">
-            {% for card in ambassadorCards %}
+            {% for ambassador in ambassadorCards %}
                 <div class="col-10 col-md-6 col-lg-4 col-xl-4 pt-5 d-flex justify-content-center">
                     <div class="card-home">
                         <div class="picture">
                             <img class="img-fluid" src="
-                                                    {% if card.picture is null %}
+                                                    {% if ambassador.picture is null %}
                                             {{ asset('build/placeholder_profil_grey.png') }}
                                             {% else %}
-                                            {{ vich_uploader_asset(card, 'pictureFile') }}
-                                            {% endif %}" alt="image de {{ card.firstname }}">
-                            <div class="star mr-1">
-                                <a href="{{ path('search_like', {'id' : card.id}) }}" class="btn btn-link js-like">
-                                    <div class="col-md-1 col-sm-12 mt-2">
-                                        <span class="js-likes mb-2">{{ card.followers | length }}</span>
+                                            {{ vich_uploader_asset(ambassador, 'pictureFile') }}
+                                            {% endif %}" alt="image de {{ ambassador.firstname }}">
+                            <div class="favorite-content d-flex justify-content-end align-items-center mr-4">
+                                <a href="{{ path('search_like', {'id' : ambassador.id}) }}"
+                                   class="btn btn-link js-favorite">
+                                    <div class="add-to-favorites d-flex flex-row mt-2">
+                                        <span class="js-favorites mb-2">{{ ambassador.followers | length }}</span>
                                         {% set class="far" %}
                                         {% if app.user %}
                                             {% for favorites in app.user.followedUsers %}
-                                                {% if card == favorites.userFavorite %}
+                                                {% if ambassador == favorites.userFavorite %}
                                                     {% set class="fas" %}
                                                 {% endif %}
                                             {% endfor %}
@@ -31,15 +32,15 @@
                         </div>
 
                         <div class="card-infos">
-                            <a href="{{ path('user_show', {'id' : card.id}) }}">
-                                <h4 class="card-title">{{ card.firstname }}</h4>
+                            <a href="{{ path('user_show', {'id' : ambassador.id}) }}">
+                                <h4 class="card-title">{{ ambassador.firstname }}</h4>
                                 <h6 class="card-subtitle mb-2 mt-3 text-muted"><i
-                                            class="fas fa-map-marker-alt primary-color"></i> {{ card.city }}</h6>
-                                <p class="card-text mt-3">{{ card.dutiesToString }}</p>
+                                            class="fas fa-map-marker-alt primary-color"></i> {{ ambassador.city }}</h6>
+                                <p class="card-text mt-3">{{ ambassador.dutiesToString }}</p>
                             </a>
                         </div>
                         <ul class="btn-discover">
-                            <li><a href="{{ path('user_show', {'id': card.id}) }}">Découvrir</a></li>
+                            <li><a href="{{ path('user_show', {'id': ambassador.id}) }}">Découvrir</a></li>
                         </ul>
                     </div>
                 </div>

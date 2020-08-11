@@ -10,11 +10,19 @@
             <div class="col-10 col-lg-8">
                 <h2 class="text-center">{{ user.firstname }}</h2>
                 <div class="row blockInfo">
-                    <div class="col-lg-4 flex d-flex flex-column my-4 p-0">
-                        <div class="star w-100 justify-content-end mb-3">
-                            <a href="{{ path('search_like', {'id' : user.id}) }}" class="btn btn-link js-like p-0">
-                                <div class="col-md-1 col-sm-12 mt-2">
-                                    <span class="js-likes">{{ user.followers | length }}</span>
+                    <div class="col-lg-4 flex d-flex flex-column justify-content-center my-4 p-0">
+                        <img class="rounded-circle imgProfilCreator ml-5"
+                             src="
+                                {% if user.picture is null %}
+                                {{ asset('build/placeholder_profil_grey.png') }}
+                                {% else %}
+                                {{ vich_uploader_asset(user, 'pictureFile') }}
+                                {% endif %}"
+                             alt="{{ user.brand.name }}">
+                        <div class="favorite-content d-flex justify-content-center align-items-center">
+                            <a href="{{ path('search_user_add_to_favorite', {'id' : user.id}) }}" class="btn btn-link js-favorite-link">
+                                <div class="add-to-favorites d-flex flex-row-reverse mb-3">
+                                    <span class="js-favorites ml-1">{{ user.followers | length }}</span>
                                     {% set class="far" %}
                                     {% if app.user %}
                                         {% for favorites in app.user.followedUsers %}
@@ -27,15 +35,6 @@
                                 </div>
                             </a>
                         </div>
-                        <img class="rounded-circle imgProfilCreator ml-5"
-                             src="
-                                {% if user.picture is null %}
-                                {{ asset('build/placeholder_profil_grey.png') }}
-                                {% else %}
-                                {{ vich_uploader_asset(user, 'pictureFile') }}
-                                {% endif %}"
-                             alt="{{ user.brand.name }}">
-
                     </div>
                     <div class="col-lg-8 flex d-flex flex-column justify-content-between mt-4 px-5">
                         <h4 class="my-3">Je recherche principalement : <em>{{ user.dutiesToString }}</em></h4>

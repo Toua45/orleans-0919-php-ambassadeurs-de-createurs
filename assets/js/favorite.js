@@ -28,6 +28,6 @@ function onClickBtnLike(event) {
         });
 }
 
-document.querySelectorAll('a.js-favorite').forEach((link) => {
+document.querySelectorAll('a.js-favorite-link').forEach((link) => {
     link.addEventListener('click', onClickBtnLike);
 });

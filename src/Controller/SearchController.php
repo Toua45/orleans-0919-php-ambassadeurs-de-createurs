@@ -58,7 +58,7 @@ class SearchController extends AbstractController
 
     /**
      *
-     * @Route("/{id}/like", name="search_like")
+     * @Route("/{id}/add/favorite", name="search_user_add_to_favorite")
      *
      * @param User $userToFollow
      * @param ObjectManager $manager
@@ -94,7 +94,7 @@ class SearchController extends AbstractController
 
         return $this->json([
             'favorites' => count($userToFollow->getFollowers()),
-            'message' => 'Like bien ajouté',
+            'message' => 'Ajouté aux favoris',
         ], 200);
     }
 }

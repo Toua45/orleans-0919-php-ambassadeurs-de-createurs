@@ -64,7 +64,7 @@ class SearchController extends AbstractController
      * @param ObjectManager $manager
      * @return Response
      */
-    public function like(User $userToFollow, ObjectManager $manager): Response
+    public function addToFavorite(User $userToFollow, ObjectManager $manager): Response
     {
         if (!$this->isGranted('ROLE_USER')) {
             return $this->json([

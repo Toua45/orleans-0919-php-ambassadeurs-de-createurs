@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-function onClickBtnLike(event) {
+function onClickBtnFavorite(event) {
     event.preventDefault();
 
     const url = this.href;
@@ -29,5 +29,5 @@ function onClickBtnLike(event) {
 }
 
 document.querySelectorAll('a.js-favorite-link').forEach((link) => {
-    link.addEventListener('click', onClickBtnLike);
+    link.addEventListener('click', onClickBtnFavorite);
 });

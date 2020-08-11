@@ -19,8 +19,8 @@
                                         <span class="js-favorites ml-1 mb-2">{{ ambassador.followers | length }}</span>
                                         {% set class="far" %}
                                         {% if app.user %}
-                                            {% for favorites in app.user.followedUsers %}
-                                                {% if ambassador == favorites.userFavorite %}
+                                            {% for favorite in app.user.followedUsers %}
+                                                {% if ambassador == favorite.userFavorite %}
                                                     {% set class="fas" %}
                                                 {% endif %}
                                             {% endfor %}

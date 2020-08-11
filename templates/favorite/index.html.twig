@@ -23,8 +23,8 @@
                                     <span class="js-favorites ml-1 mb-2">{{ favorite.userFavorite.followers | length }}</span>
                                     {% set class="fas" %}
                                     {% if app.user %}
-                                        {% for ConnectedUserFavorites in app.user.followedUsers %}
-                                            {% if favorite == ConnectedUserFavorites.userFavorite %}
+                                        {% for ConnectedUserFavorite in app.user.followedUsers %}
+                                            {% if favorite == ConnectedUserFavorite.userFavorite %}
                                                 {% set class="far" %}
                                             {% endif %}
                                         {% endfor %}

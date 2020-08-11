@@ -16,11 +16,11 @@
                                 {{ vich_uploader_asset(favorite.userFavorite, 'pictureFile') }}
                                 {% endif %}"
                              alt="image de {{ favorite.userFavorite.firstname }}">
-                        <div class="star">
+                        <div class="favorite-content d-flex justify-content-end align-items-center mr-4">
                             <a href="{{ path('search_like', {'id' : favorite.userFavorite.id}) }}"
-                               class="btn btn-link js-like">
-                                <div class="col-md-1 col-sm-12 mt-2">
-                                    <span class="js-likes">{{ favorite.userFavorite.followers | length }}</span>
+                               class="btn btn-link js-favorite">
+                                <div class="add-to-favorites d-flex flex-row mt-2">
+                                    <span class="js-favorites mb-2">{{ favorite.userFavorite.followers | length }}</span>
                                     {% set class="fas" %}
                                     {% if app.user %}
                                         {% for ConnectedUserFavorites in app.user.followedUsers %}
@@ -60,7 +60,7 @@
     </div>
     <div class="text-center">
         {% if page >= 2 %}
-            <a class="btn btn-gold mx-5 mb-5" href="{{ path('app_favorite', {'page': page-1})}}">
+            <a class="btn btn-gold mx-5 mb-5" href="{{ path('app_favorite', {'page': page-1}) }}">
                 <i class="far fa-arrow-alt-circle-left"></i> Précédent
             </a>
         {% else %}
@@ -70,7 +70,7 @@
         {% endif %}
 
         {% if page < nbPages %}
-            <a class="btn btn-gold mx-5 mb-5" href="{{ path('app_favorite', {'page': page+1})}}">
+            <a class="btn btn-gold mx-5 mb-5" href="{{ path('app_favorite', {'page': page+1}) }}">
                 Suivant <i class="far fa-arrow-alt-circle-right"></i>
             </a>
         {% else %}

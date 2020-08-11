@@ -4,7 +4,7 @@ function onClickBtnLike(event) {
     event.preventDefault();
 
     const url = this.href;
-    const spanCount = this.querySelector('span.js-likes');
+    const spanCount = this.querySelector('span.js-favorites');
     const icone = this.querySelector('.fa-star');
 
     axios.get(url)
@@ -28,6 +28,6 @@ function onClickBtnLike(event) {
         });
 }
 
-document.querySelectorAll('a.js-like').forEach((link) => {
+document.querySelectorAll('a.js-favorite').forEach((link) => {
     link.addEventListener('click', onClickBtnLike);
 });

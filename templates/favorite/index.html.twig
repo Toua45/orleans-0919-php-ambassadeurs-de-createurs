@@ -17,14 +17,14 @@
                                 {% endif %}"
                              alt="image de {{ favorite.userFavorite.firstname }}">
                         <div class="favorite-content d-flex justify-content-end align-items-center mr-4">
-                            <a href="{{ path('search_like', {'id' : favorite.userFavorite.id}) }}"
-                               class="btn btn-link js-favorite">
-                                <div class="add-to-favorites d-flex flex-row mt-2">
-                                    <span class="js-favorites mb-2">{{ favorite.userFavorite.followers | length }}</span>
+                            <a href="{{ path('search_user_add_to_favorite', {'id' : favorite.userFavorite.id}) }}"
+                               class="btn btn-link js-favorite-link">
+                                <div class="add-to-favorites d-flex flex-row-reverse mt-2">
+                                    <span class="js-favorites ml-1 mb-2">{{ favorite.userFavorite.followers | length }}</span>
                                     {% set class="fas" %}
                                     {% if app.user %}
-                                        {% for ConnectedUserFavorites in app.user.followedUsers %}
-                                            {% if favorite == ConnectedUserFavorites.userFavorite %}
+                                        {% for ConnectedUserFavorite in app.user.followedUsers %}
+                                            {% if favorite == ConnectedUserFavorite.userFavorite %}
                                                 {% set class="far" %}
                                             {% endif %}
                                         {% endfor %}

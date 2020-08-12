@@ -13,13 +13,13 @@
                                 {{ vich_uploader_asset(creator.user, 'pictureFile') }}
                                 {% endif %}" alt="image de {{ creator.name }}">
                             <div class="favorite-content d-flex justify-content-end align-items-center mr-4">
-                                <a href="{{ path('search_like', {'id' : creator.user.id}) }}" class="btn btn-link js-favorite">
-                                    <div class="add-to-favorites d-flex flex-row mt-2">
-                                        <span class="js-favorites mb-2">{{ creator.user.followers | length }}</span>
+                                <a href="{{ path('search_user_add_to_favorite', {'id' : creator.user.id}) }}" class="btn btn-link js-favorite-link">
+                                    <div class="add-to-favorites d-flex flex-row-reverse mt-2">
+                                        <span class="js-favorites ml-1 mb-2">{{ creator.user.followers | length }}</span>
                                         {% set class="far" %}
                                         {% if app.user %}
-                                            {% for favorites in app.user.followedUsers %}
-                                                {% if creator == favorites.userFavorite %}
+                                            {% for favorite in app.user.followedUsers %}
+                                                {% if creator == favorite.userFavorite %}
                                                     {% set class="fas" %}
                                                 {% endif %}
                                             {% endfor %}

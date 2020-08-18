@@ -32,9 +32,14 @@ function onClickBtnFavorite(event) {
                 } else {
                     icone.dataset.prefix = 'far';
 
-                    // Si l'étoile est transparente alors, on cache la card de la personne
                     // eslint-disable-next-line max-len
-                    document.getElementById('card_on_favorite_' + idUserToFollow).classList.replace('d-flex', 'd-none');
+                    // Cette condition ne fonctionne que sur la page avec l'url qui comprend le regex 'favorite'
+                    if (window.location.href.match(new RegExp('favorite'))) {
+                        // Si l'étoile est transparente alors, on cache la card de la personne
+                        // eslint-disable-next-line max-len
+                        document.getElementById('card_on_favorite_' + idUserToFollow).classList.replace('d-flex', 'd-none');
+                    }
+
                 }
             }
             // eslint-disable-next-line no-unused-vars

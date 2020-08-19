@@ -6,7 +6,7 @@
     <h1 class="text-center"> Liste de mes favoris </h1>
     <div class="row justify-content-center mt-5 mx-0">
         {% for favorite in favorites %}
-            <div class="col-10 col-md-6 col-lg-4 col-xl-4 pt-5 d-flex justify-content-center">
+            <div id="card_on_favorite_{{ favorite.userFavorite.id }}" class="col-10 col-md-6 col-lg-4 col-xl-4 pt-5 d-flex justify-content-center">
                 <div class="card-home">
                     <div class="picture">
                         <img class="img-fluid" src="
@@ -81,9 +81,7 @@
     </div>
 
     <div class="text-center m-3">
-        <a href="{{ path('app_profile') }}">
-            <button type="button" class="btn btn-gold">Retour au profil</button>
-        </a>
+        <a href="{{ path('app_profile') }}" class="btn btn-gold mb-5">Retour au profil</a>
     </div>
 {% endblock %}
 
